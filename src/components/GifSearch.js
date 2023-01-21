@@ -1,26 +1,37 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-function GifSearch({handleSearch}){
-    const [search,setSearch]=useState('')
-    // function handleChange(e){
-    //     setSearch(e.target.value.toLowerCase())
-    //     handleSearch(search)
-    // }
-    return (
-        // <form onSubmit={handleChange}>
-        //     <input
-        //     type="text"
-        //     placeholder="search"
-        //     />
-        // </form>
-        <form onSubmit={(e) => handleSearch(e, search)}>
-      <input 
-        type="text" 
-        value={search} 
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <button type="submit">Search</button>
-    </form>
-    )
+function GifSearch({ onSubmitQuery }) {
+  const [querySearch, setQuerySearch] = useState("");
+
+
+  function handleSearchChange(e) {
+    setQuerySearch(e.target.value);
+  }
+  
+  function handleQuerySearch(e) {
+    e.preventDefault();
+    onSubmitQuery(querySearch);
+  }
+
+  
+
+  return (
+    <div>
+      <form onSubmit={handleQuerySearch}>
+        
+          <input
+            id="search"
+            type="text"
+            value={querySearch}
+            onChange={handleSearchChange}
+          />
+        
+        <button type="submit">
+          Search
+        </button>
+      </form>
+    </div>
+  );
 }
-export default GifSearch
+
+export default GifSearch;

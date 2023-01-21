@@ -1,22 +1,16 @@
-import React from "react";
+import React from 'react'
 
-function GifList({data}){
-    // if(!data || data.length === 0){
-    //     return <div>Loading...</div>
-    //   }
-   
-   
-    return (
-        <div>
-          <ul> 
-            {data.map((datas)=> (
-          <li key={datas.url}>
-            <img src={datas.url} alt={datas.title}/>
-         </li>
-            ))
-          }  
-          </ul>
-        </div>
-    )
+const GifList = ({data}) => {
+  return (
+    <ul className='gif-container'>
+      {data.map((gif) => (
+        <li  key={gif.url}>
+          <img src={gif.url} alt="gif" />
+        </li>
+      ))}
+  </ul>
+    
+  )
 }
+
 export default GifList

@@ -1,12 +1,21 @@
 import React from "react";
 
 function GifList({data}){
-    const list = data.map((datas)=> {
-    return <li>{datas}</li>
-})
+    // if(!data || data.length === 0){
+    //     return <div>Loading...</div>
+    //   }
+   
+   
     return (
         <div>
-          <ul>{list}</ul>
+          <ul> 
+            {data.map((datas)=> (
+          <li key={datas.url}>
+            <img src={datas.url} alt={datas.title}/>
+         </li>
+            ))
+          }  
+          </ul>
         </div>
     )
 }
